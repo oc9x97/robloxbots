@@ -18,12 +18,26 @@ Here are the commands you use for the bot.
 
 **render/dontrender** - Shows or hides bots screen to reduce lag.
 
+**goto** - Does follow but you don't need to unfollow.
+
+**dance** - Makes the bot dance, any dance.
+
+**rejoin** - Makes the bot rejoin, might not work for Delta.
+
+**wave** - Makes the bot wave and say "Hello world!"
+
+**cheer** - Makes the bot cheer and say "Yay!"
+
+**laugh** - Makes the bot laugh with a creepy text.
+
+**love** - For a friend of mine as a shoutout!
+
 # Credits
 
 **Starter Code** - CasualDev, some guy I found on someone's screenshare.
 
 **Expanded** - My friend Torn, or deathwish_ontop, or bakersrule2020.
 
-**Expanded More** - ChatGPT did the sit command, nothing else.
+**Expanded More** - ChatGPT did the sit command, and had to fix some code since Torn took too long.
 
 **Uploaded and Written** - oc9x97 aka me!
