@@ -1,84 +1,96 @@
-getgenv().host = "Bot Controller Username"
-    getgenv().alts = {"alt1", "alt2"} -- Optinal to fill out
-    getgenv().defaultfps = 60
-    getgenv().prefix = "!"
-    getgenv().shouldbotrender = true -- To show bot's screen or not to reduce lag
-    RunService = game.RunService
-    TeleportService = game:GetService("TeleportService") -- Remove this and Rejoin if you are using Delta
-    PlaceId, JobId = game.PlaceId, game.JobId
-    local apiws
-    game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("Attempting API connection...")
-    function apierr(str)
-        game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("Failed to connect to the API! (Error: " .. str .. ")")
-    end
-    xpcall(function()
-        apiws = WebSocket.connect("localhost:8080")
-    end, apierr)
+getgenv().host = "Your Username"
+getgenv().alts = {"alt1", "alt2"} -- Optional to fill out
+getgenv().defaultfps = 60
+getgenv().prefix = ""
+getgenv().shouldbotrender = true -- To show bot's screen or not to reduce lag
+RunService = game:GetService("RunService")
+TeleportService = game:GetService("TeleportService") -- Remove this and Rejoin if you are using Delta
+PlaceId, JobId = game.PlaceId, game.JobId
+local apiws
 
-    local following = false
+local function apierr(str)
+    game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("Failed to connect to the API! (Error: " .. str .. ")")
+end
 
+local function sendApiMessage(message)
+    game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(message)
+end
+
+if game.Players.LocalPlayer.Name ~= host then
+    setfpscap(getgenv().defaultfps)
+    print("loading")
+else
+    warn("not loading for host")
     if not getgenv().shouldbotrender then
         RunService:Set3dRenderingEnabled(false)
     end
-    
-    if game.Players.LocalPlayer.Name ~= host then
-        setfpscap(defaultfps)
-        print("loading")
-    else 
-        warn("not loading for host") -- This is supposed to happen so then the host isn't controlled.
-        return
-    end
+    return
+end
+
 threadlive = true
-    game.Players[host].Chatted:Connect(function(message)
+
+game.Players[host].Chatted:Connect(function(message)
     if threadlive then
-        local message = string.lower(message)
-        if message == prefix.."follow" then -- Makes Player Follow You
-            following = true 
-            if following == true then
-                while following == true do
+        local lowerMessage = string.lower(message)
+        if lowerMessage == getgenv().prefix.."follow" then
+            following = true
+            if following then
+                while following do
                     game.Players.LocalPlayer.Character.Humanoid:MoveTo(game.Players[host].Character.HumanoidRootPart.Position)
                     wait()
                 end
             end
-        elseif message == prefix.."unfollow" then
+        elseif lowerMessage == getgenv().prefix.."unfollow" then
             following = false
-        elseif message == prefix.."sit" then -- Makes Player Sit
+        elseif lowerMessage == getgenv().prefix.."goto" then
+            following = true
+            wait(0)
+            following = false
+        elseif lowerMessage == getgenv().prefix.."sit" then
             game.Players.LocalPlayer.Character.Humanoid.Sit = true
-        elseif message == prefix.."jump" then -- Makes Player Jump
-            game.Players.LocalPlayer.Character.Humanoid.Jump = true
-        elseif message == prefix.."reset" then -- Kills Player
+        elseif lowerMessage == getgenv().prefix.."jump" then
+            game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+        elseif lowerMessage == getgenv().prefix.."reset" then
             game.Players.LocalPlayer.Character:BreakJoints()
-        elseif message == prefix.."dance" then -- Makes Them Hit A Jig
+        elseif lowerMessage == getgenv().prefix.."dance" then
             if game:GetService("TextChatService").TextChannels.RBXGeneral then
                 game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("/e dance")
-                else
-                    print("unable to lol") -- They can't dance.
+            else
+                print("unable to lol")
             end
-        elseif message == prefix.."render" then -- Enable Render
-            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("Rendering enabled. I can see!")
+        elseif lowerMessage == getgenv().prefix.."render" then
+            sendApiMessage("Rendering enabled. I can see!")
             RunService:Set3dRenderingEnabled(true)
-        elseif message == prefix.."dontrender" then -- Disable Render
-            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("Rendering disabled. I'm blind!")
-                RunService:Set3dRenderingEnabled(false)
-        elseif string.find(message, prefix .. "say") then -- Say Command
-            args = string.gsub(message, prefix .. "say", "")
-            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync(args)
-        elseif message == prefix.."rejoin" then -- Rejoin (Remove If Delta has Errors)
-                TeleportService:TeleportToPlaceInstance(PlaceId, JobId, LocalPlayer)
-        elseif message == prefix.."credits" then -- Disable Render
-            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("Code by CasualDev Expanded by oc9x97 Fixing by Torn!")
-        elseif message == prefix.."cmds" then -- Disable Render
-            game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("The commands we're inside of the README file, but we have credits, render, dontrender, rejoin, sit dance, follow, unfollow")
-        elseif message == prefix.."stopaltcontrol" then
+        elseif lowerMessage == getgenv().prefix.."dontrender" then
+            sendApiMessage("Rendering disabled. I'm blind!")
+            RunService:Set3dRenderingEnabled(false)
+        elseif string.find(lowerMessage, getgenv().prefix .. "say") then
+            local args = string.gsub(lowerMessage, getgenv().prefix .. "say", "")
+            sendApiMessage(args)
+        elseif lowerMessage == getgenv().prefix.."rejoin" then
+            TeleportService:TeleportToPlaceInstance(PlaceId, JobId, LocalPlayer)
+        elseif lowerMessage == getgenv().prefix.."wave" then
+            sendApiMessage("/e wave")
+            sendApiMessage("Hello world!")
+        elseif lowerMessage == getgenv().prefix.."cheer" then
+            sendApiMessage("/e cheer")
+            sendApiMessage("Yay!")
+        elseif lowerMessage == getgenv().prefix.."laugh" then
+            sendApiMessage("/e laugh")
+            sendApiMessage("HAHAHAHAHAHA!!!")
+        elseif lowerMessage == getgenv().prefix.."love" then
+            sendApiMessage("Love? That goes to my friend tan15t!")
+        elseif lowerMessage == getgenv().prefix.."credits" then
+            sendApiMessage("Code by CasualDev Expanded by oc9x97 Fixing by Torn, Since Torn was slow to code most of it I had to use ChatGPT!")
+        elseif lowerMessage == getgenv().prefix.."cmds" then
+            sendApiMessage("The commands are inside the README file, but we have credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset")
+        elseif lowerMessage == getgenv().prefix.."stopaltcontrol" then
+            threadlive = false
+        elseif lowerMessage == getgenv().prefix.."resumealtcontrol" then
             threadlive = true
-        else
-            return
         end
-    end)
-    else
-        if message == prefix.."resumealtcontrol" then
-            threadlive = true
-        end
-        end
-    game:GetService("TextChatService").TextChannels.RBXGeneral:SendAsync("RobloxBots by oc9x97 v0.0.1 Loaded (Host: " .. host .. ")")
-    print("loaded")
+    end
+end)
+
+sendApiMessage("RobloxBots by oc9x97 v0.0.2 Loaded (Host: " .. getgenv().host .. ")")
+print("loaded")
