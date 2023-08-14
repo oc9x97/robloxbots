@@ -83,7 +83,7 @@ game.Players[host].Chatted:Connect(function(message)
         elseif lowerMessage == getgenv().prefix.."credits" then
             sendApiMessage("Code by CasualDev Expanded by oc9x97 Fixing by Torn, Since Torn was slow to code most of it I had to use ChatGPT!")
         elseif lowerMessage == getgenv().prefix.."cmds" then
-            sendApiMessage("The commands are inside the README file, but we have credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset")
+            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset, cmds, goto, laugh, cheer, wave, and love! ")
         elseif lowerMessage == getgenv().prefix.."stopaltcontrol" then
             threadlive = false
         elseif lowerMessage == getgenv().prefix.."resumealtcontrol" then
