@@ -1,3 +1,11 @@
+------------------------------------
+-- HEY YOU SKID, DONT STEAL THE CODE
+-- IS JUST WRONG AND, SO ANNOYING
+-- CODE IS ORIGNALLY MADE BY OC9X97
+-- BTW WE ARE WORKING ON A DISCORD
+-- SO GOODLUCK COPYING THAT SKIDS
+------------------------------------
+
 getgenv().host = "Username"
 getgenv().alts = {"alt1", "alt2"} -- Optional to fill out
 getgenv().defaultfps = 60
