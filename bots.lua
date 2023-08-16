@@ -43,6 +43,14 @@ game.Players[host].Chatted:Connect(function(message)
         elseif lowerMessage == getgenv().prefix.."unfollow" then
             following = false
         elseif lowerMessage == getgenv().prefix.."bring" then
+            for i,v in ipairs(game.Players:GetPlayers()) do
+                if v.Name == getgenv().host then
+                    local targetplayer = v
+                    local LocalPlayer = game.Players.LocalPlayer
+                    LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(targetplayer.Character.HumanoidRootPart.Position.X, targetplayer.Character.HumanoidRootPart.Position.Y, targetplayer.Character.HumanoidRootPart.Position.Z)
+                end
+            end
+        elseif lowerMessage == getgenv().prefix.."oldbring" then
             local player = game.Players.LocalPlayer
             local target = game.Players[host].Character
 
@@ -97,7 +105,7 @@ game.Players[host].Chatted:Connect(function(message)
         elseif lowerMessage == getgenv().prefix.."credits" then
             sendApiMessage("Code by CasualDev Expanded by oc9x97 Fixing by Torn, Since Torn was slow to code most of it I had to use ChatGPT!")
         elseif lowerMessage == getgenv().prefix.."cmds" then
-            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset, cmds, bring, laugh, cheer, wave, point, rejoin, kick, and love! ")
+            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, oldbring, jump, reset, cmds, bring, laugh, cheer, wave, point, rejoin, kick, and love! ")
         elseif lowerMessage == getgenv().prefix.."stopaltcontrol" then
             threadlive = false
         elseif lowerMessage == getgenv().prefix.."resumealtcontrol" then
