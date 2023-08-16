@@ -18,7 +18,9 @@ Here are the commands you use for the bot.
 
 **render/dontrender** - Shows or hides bots screen to reduce lag.
 
-**bring** - Flies the bot towards you, kinda weird and slow.
+**oldbring** - Flies the bot towards you, kinda weird and slow.
+
+**bring** - Teleports the bot to you.
 
 **dance** - Makes the bot dance, any dance.
 
