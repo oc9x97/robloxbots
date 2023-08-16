@@ -92,9 +92,9 @@ game.Players[host].Chatted:Connect(function(message)
             sendApiMessage("Look!")
         elseif lowerMessage == getgenv().prefix.."kick" then
             if game.Players.LocalPlayer.Name == host then
-                sendApiMessage("Kicked by command. Goodbye!")
+                sendApiMessage("Kicking player...")
                 wait(1)
-                game.Players.LocalPlayer:Kick()
+                kickPlayer(game.Players.LocalPlayer)
             end
         elseif lowerMessage == getgenv().prefix.."love" then
             sendApiMessage("Love? That goes to my friend tan15t!")
