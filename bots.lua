@@ -114,5 +114,5 @@ game.Players[host].Chatted:Connect(function(message)
     end
 end)
 
-sendApiMessage("RobloxBots by oc9x97 v0.0.3 Loaded (Host: " .. getgenv().host .. ")")
+sendApiMessage("RobloxBots by oc9x97 v0.0.3 Loaded ( Host: " .. getgenv().host .. " )")
 print("loaded")
