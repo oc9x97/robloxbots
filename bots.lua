@@ -70,6 +70,8 @@ game.Players[host].Chatted:Connect(function(message)
         elseif lowerMessage == getgenv().prefix.."render" then
             sendApiMessage("Rendering enabled. I can see!")
             RunService:Set3dRenderingEnabled(true)
+         elseif lowerMessage == getgenv().prefix.."kick" then
+             game.Players.LocalPlayer:Kick("Creator has kicked you.")
         elseif lowerMessage == getgenv().prefix.."dontrender" then
             sendApiMessage("Rendering disabled. I'm blind!")
             RunService:Set3dRenderingEnabled(false)
@@ -95,7 +97,7 @@ game.Players[host].Chatted:Connect(function(message)
         elseif lowerMessage == getgenv().prefix.."credits" then
             sendApiMessage("Code by CasualDev Expanded by oc9x97 Fixing by Torn, Since Torn was slow to code most of it I had to use ChatGPT!")
         elseif lowerMessage == getgenv().prefix.."cmds" then
-            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset, cmds, bring, laugh, cheer, wave, point, and love! ")
+            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset, cmds, bring, laugh, cheer, wave, point, rejoin, kick, and love! ")
         elseif lowerMessage == getgenv().prefix.."stopaltcontrol" then
             threadlive = false
         elseif lowerMessage == getgenv().prefix.."resumealtcontrol" then
