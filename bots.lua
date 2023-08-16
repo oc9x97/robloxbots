@@ -47,14 +47,14 @@ game.Players[host].Chatted:Connect(function(message)
             local target = game.Players[host].Character
 
             if target and target:IsDescendantOf(game) then
-                local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear)
-                local tweenProperties = {CFrame = target.HumanoidRootPart.CFrame + Vector3.new(0, 10, 0)}
+            local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear)
+            local tweenProperties = {CFrame = target.HumanoidRootPart.CFrame + Vector3.new(0, 10, 0)}
 
-                local tween = game:GetService("TweenService"):Create(player.Character.HumanoidRootPart, tweenInfo, tweenProperties)
-                tween:Play()
-            else
-                apierr("Host player's character not found.")
-            end
+            local tween = game:GetService("TweenService"):Create(player.Character.HumanoidRootPart, tweenInfo, tweenProperties)
+            tween:Play()
+          else
+           apierr("Host player's character not found.")
+          end
         elseif lowerMessage == getgenv().prefix.."sit" then
             game.Players.LocalPlayer.Character.Humanoid.Sit = true
         elseif lowerMessage == getgenv().prefix.."jump" then
@@ -90,12 +90,6 @@ game.Players[host].Chatted:Connect(function(message)
         elseif lowerMessage == getgenv().prefix.."point" then
             sendApiMessage("/e point")
             sendApiMessage("Look!")
-        elseif lowerMessage == getgenv().prefix.."kick" then
-            if game.Players.LocalPlayer.Name == host then
-                sendApiMessage("Kicking player...")
-                wait(1)
-                kickPlayer(game.Players.LocalPlayer)
-            end
         elseif lowerMessage == getgenv().prefix.."love" then
             sendApiMessage("Love? That goes to my friend tan15t!")
         elseif lowerMessage == getgenv().prefix.."credits" then
