@@ -43,3 +43,11 @@ Here are the commands you use for the bot.
 **Expanded More** - ChatGPT did the sit command, and had to fix some code since CodeCat took too long.
 
 **Uploaded and Written** - oc9x97 aka me!
+
+# Update Logs
+
+**v0.0.1** - Added emotes and bring (old one).
+
+**v0.0.2** - Fixed bring with say command and point.
+
+**v0.0.3** - Updated bring, and say is compitable with caps.
