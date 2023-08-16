@@ -1,4 +1,4 @@
-getgenv().host = "Your Username"
+getgenv().host = "Username"
 getgenv().alts = {"alt1", "alt2"} -- Optional to fill out
 getgenv().defaultfps = 60
 getgenv().prefix = ""
@@ -42,10 +42,19 @@ game.Players[host].Chatted:Connect(function(message)
             end
         elseif lowerMessage == getgenv().prefix.."unfollow" then
             following = false
-        elseif lowerMessage == getgenv().prefix.."goto" then
-            following = true
-            wait(0)
-            following = false
+        elseif lowerMessage == getgenv().prefix.."bring" then
+            local player = game.Players.LocalPlayer
+            local target = game.Players[host].Character
+
+            if target and target:IsDescendantOf(game) then
+                local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Linear)
+                local tweenProperties = {CFrame = target.HumanoidRootPart.CFrame + Vector3.new(0, 10, 0)}
+
+                local tween = game:GetService("TweenService"):Create(player.Character.HumanoidRootPart, tweenInfo, tweenProperties)
+                tween:Play()
+            else
+                apierr("Host player's character not found.")
+            end
         elseif lowerMessage == getgenv().prefix.."sit" then
             game.Players.LocalPlayer.Character.Humanoid.Sit = true
         elseif lowerMessage == getgenv().prefix.."jump" then
@@ -83,7 +92,7 @@ game.Players[host].Chatted:Connect(function(message)
         elseif lowerMessage == getgenv().prefix.."credits" then
             sendApiMessage("Code by CasualDev Expanded by oc9x97 Fixing by Torn, Since Torn was slow to code most of it I had to use ChatGPT!")
         elseif lowerMessage == getgenv().prefix.."cmds" then
-            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset, cmds, goto, laugh, cheer, wave, and love! ")
+            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset, cmds, bring, laugh, cheer, wave, and love! ")
         elseif lowerMessage == getgenv().prefix.."stopaltcontrol" then
             threadlive = false
         elseif lowerMessage == getgenv().prefix.."resumealtcontrol" then
