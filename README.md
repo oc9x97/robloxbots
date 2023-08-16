@@ -38,8 +38,8 @@ Here are the commands you use for the bot.
 
 **Starter Code** - CasualDev, some guy I found on someone's screenshare.
 
-**Expanded** - My friend Torn, or deathwish_ontop, or bakersrule2020.
+**Expanded** - My friend CodeCat, or deathwish_ontop, or bakersrule2020.
 
-**Expanded More** - ChatGPT did the sit command, and had to fix some code since Torn took too long.
+**Expanded More** - ChatGPT did the sit command, and had to fix some code since CodeCat took too long.
 
 **Uploaded and Written** - oc9x97 aka me!
