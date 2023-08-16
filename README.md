@@ -18,7 +18,7 @@ Here are the commands you use for the bot.
 
 **render/dontrender** - Shows or hides bots screen to reduce lag.
 
-**goto** - Does follow but you don't need to unfollow.
+**bring** - Flies the bot towards you, kinda weird and slow.
 
 **dance** - Makes the bot dance, any dance.
 
