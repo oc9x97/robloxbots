@@ -98,22 +98,16 @@ game.Players[host].Chatted:Connect(function(message)
             TeleportService:TeleportToPlaceInstance(PlaceId, JobId, LocalPlayer)
         elseif lowerMessage == getgenv().prefix.."wave" then
             sendApiMessage("/e wave")
-            sendApiMessage("Hello world!")
         elseif lowerMessage == getgenv().prefix.."cheer" then
             sendApiMessage("/e cheer")
-            sendApiMessage("Yay!")
         elseif lowerMessage == getgenv().prefix.."laugh" then
             sendApiMessage("/e laugh")
-            sendApiMessage("HAHAHAHAHAHA!!!")
         elseif lowerMessage == getgenv().prefix.."point" then
             sendApiMessage("/e point")
-            sendApiMessage("Look!")
-        elseif lowerMessage == getgenv().prefix.."love" then
-            sendApiMessage("Love? That goes to my friend tan15t!")
         elseif lowerMessage == getgenv().prefix.."credits" then
-            sendApiMessage("Code by CasualDev Expanded by oc9x97 Fixing by Torn, Since Torn was slow to code most of it I had to use ChatGPT!")
+            sendApiMessage("Code by oc9x97, with some help of his friends!")
         elseif lowerMessage == getgenv().prefix.."cmds" then
-            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset, cmds, bring, laugh, cheer, wave, point, rejoin, kick, and love! ")
+            sendApiMessage("credits, render, dontrender, rejoin, sit, dance, follow, unfollow, jump, reset, cmds, bring, laugh, cheer, wave, point, rejoin, kick ")
         elseif lowerMessage == getgenv().prefix.."stopaltcontrol" then
             threadlive = false
         elseif lowerMessage == getgenv().prefix.."resumealtcontrol" then
@@ -122,5 +116,5 @@ game.Players[host].Chatted:Connect(function(message)
     end
 end)
 
-sendApiMessage("RobloxBots by oc9x97 v0.0.3 Loaded ( Host: " .. getgenv().host .. " )")
+sendApiMessage("RobloxBots by oc9x97 v1 Loaded ( Host: " .. getgenv().host .. " )")
 print("loaded")
