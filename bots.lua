@@ -6,7 +6,7 @@
 -- SO GOODLUCK COPYING THAT SKIDS
 ------------------------------------
 
-getgenv().host = "Username"
+getgenv().host = "oc9x97"
 getgenv().alts = {"alt1", "alt2"} -- Optional to fill out
 getgenv().defaultfps = 60
 getgenv().prefix = ""
