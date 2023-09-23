@@ -37,6 +37,36 @@ end
 
 threadlive = true
 
+-- Function to check if getgenv().host is not in game.Players and kick the bot
+local function checkHostInPlayers()
+    local host = getgenv().host
+    local playerList = game.Players:GetPlayers()
+    
+    local hostInPlayerList = false
+    for _, player in ipairs(playerList) do
+        if player.Name == host then
+            hostInPlayerList = true
+            break
+        end
+    end
+    
+    if not hostInPlayerList then
+        game.Players.LocalPlayer:Kick("Creator has left.")
+    end
+end
+
+-- Run the check immediately when the script starts
+checkHostInPlayers()
+
+-- Monitor when players join and leave
+game.Players.PlayerAdded:Connect(function(player)
+    checkHostInPlayers() -- Check when a player joins
+end)
+
+game.Players.PlayerRemoving:Connect(function(player)
+    checkHostInPlayers() -- Check when a player leaves
+end)
+
 game.Players[host].Chatted:Connect(function(message)
     if threadlive then
         local lowerMessage = string.lower(message)
@@ -116,5 +146,5 @@ game.Players[host].Chatted:Connect(function(message)
     end
 end)
 
-sendApiMessage("RobloxBots by oc9x97 v1 Loaded ( Host: " .. getgenv().host .. " )")
+sendApiMessage("RobloxBots by oc9x97 v1.3 Loaded ( Host: " .. getgenv().host .. " )")
 print("loaded")
